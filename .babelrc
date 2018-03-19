@@ -1,0 +1,66 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@workmarket/wm-babel-preset",
+          {
+            "env": "development",
+            "modules": false
+          }
+        ],
+        "flow"
+      ],
+      "plugins": [
+        "syntax-dynamic-import",
+        "transform-decorators-legacy"
+      ]
+    },
+    "build": {
+      "presets": [
+        [
+          "@workmarket/wm-babel-preset",
+          {
+            "env": "build"
+          }
+        ],
+        "flow"
+      ],
+      "plugins": [
+        "syntax-dynamic-import",
+        "transform-decorators-legacy"
+      ]
+    },
+    "build-es": {
+      "presets": [
+        [
+          "@workmarket/wm-babel-preset",
+          {
+            "env": "build",
+            "modules": false
+          }
+        ],
+        "flow"
+      ],
+      "plugins": [
+        "syntax-dynamic-import",
+        "transform-decorators-legacy"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "@workmarket/wm-babel-preset",
+          {
+            "env": "test"
+          }
+        ],
+        "flow"
+      ],
+      "plugins": [
+        "syntax-dynamic-import",
+        "transform-decorators-legacy"
+      ]
+    }
+  }
+}
