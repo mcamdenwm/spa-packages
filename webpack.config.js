@@ -9,7 +9,7 @@ const paths = {
 const devConfig = {
 	devServer: {
 		enabled: true,
-		port: '4001',
+		port: '4004',
 	},
 	generateHtml: {
 		enabled: true,

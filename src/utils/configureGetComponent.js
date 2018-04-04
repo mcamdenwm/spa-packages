@@ -1,11 +1,10 @@
-import {
-	configureGetComponent,
-} from '@workmarket/ui-generation';
+import getComponent from '@workmarket/ui-generation';
+import WMGeneric from '@workmarket/ui-generation/dist-es/WMGeneric';
 import Swagger from 'swagger-client';
 import * as Components from '@workmarket/front-end-components';
 import * as Patterns from '@workmarket/front-end-patterns';
 import { goodJobClient } from '@workmarket/projekt_good_job';
-import sharedFunctions from './sharedFunctions';
+// import sharedFunctions from './sharedFunctions';
 import store from '../store';
 import { authCb } from '../../goodjob';
 
@@ -36,14 +35,15 @@ const getComponentConfigurator = async () => {
 			configuredSwagger = await Swagger(API_URL, {});
 		}
 
-		// Using cookie based auth, so don't pass authentication
-		configuredGetComponent = configureGetComponent({
-			api: configuredSwagger,
-			functions: sharedFunctions,
-			store,
+		configuredGetComponent = getComponent({
+			UI: true,
+			swaggerClient: configuredSwagger,
+			// functions: sharedFunctions,
+			// store,
 			components: {
 				...Components,
 				...Patterns,
+				WMGeneric,
 			},
 		});
 

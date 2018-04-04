@@ -1,23 +1,23 @@
+import reduxThunk from 'redux-thunk';
 import {
-	generateStore,
-	generateState,
-} from '@workmarket/ui-generation';
+	createStore,
+	applyMiddleware,
+} from 'redux';
+import { createLogger } from 'redux-logger';
+import { genericReducer } from '@workmarket/ui-generation';
+import initialState from './initialState';
 
-export const storeConfig = {
-	FOO: {
-		initialState: {
-			data: {
-				bar: 'baz',
-			},
-		},
-		handlers: [
-			'FOO__DO_THING',
-		],
-	},
-};
+const store = createStore(
+	genericReducer(initialState),
+	applyMiddleware(reduxThunk, createLogger()),
+);
 
-const store = generateStore({
-	reducers: generateState(storeConfig),
-});
+if (module.hot) {
+	// @todo something for this
+}
+
+if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+	window._store = store;
+}
 
 export default store;
