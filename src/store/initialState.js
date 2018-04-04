@@ -1,5 +1,12 @@
 export default {
-	FOO: {
-		bar: 'bazzzlezzzz',
-	}
+	Packages: {
+		// Create modal
+		CREATE: {
+			open: false,
+		},
+		// Activate modal
+		ACTIVATE: {
+			open: false,
+		},
+	},
 };

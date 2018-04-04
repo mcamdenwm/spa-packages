@@ -7,16 +7,10 @@ const messages = {
 export default {
 	uuid: 'page-header',
 	type: 'WMToolbar',
-	props: {
-		// style: styles.pageheader,
-	},
 	children: [
 		{
 			uuid: 'page-header__header',
 			type: 'div',
-			props: {
-				// style: styles.container,
-			},
 			children: [
 				{
 					uuid: 'page-header__breadcrumbs',
@@ -30,8 +24,8 @@ export default {
 					},
 					actions: {
 						addButtonFunc: [{
-							path: ['FOO', 'bar'],
-							payload: 'Ayno',
+							path: ['Packages', 'CREATE', 'open'],
+							payload: true,
 						}],
 					},
 				},
