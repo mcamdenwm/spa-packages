@@ -11,6 +11,7 @@ const messages = {
 
 export default {
 	type: 'WMConfigurableModal',
+	uuid: 'activateModal',
 	props: {
 		primaryLabel: 'Activate Now',
 		secondaryLabel: 'Activate Later',

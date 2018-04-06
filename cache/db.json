@@ -1,0 +1,31 @@
+{
+	"companies": [{
+		"id": 1,
+		"name": "AZ1"
+	}, {
+		"id": 2,
+		"name": "BZ2"
+	}],
+	"features": [{
+		"id": 3,
+		"name": "Agreements"
+	}, {
+		"id": 4,
+		"name": "BAssignments"
+	}, {
+		"id": 5,
+		"name": "CAssignments"
+	}, {
+		"id": 6,
+		"name": "DAssignments"
+	}, {
+		"id": 7,
+		"name": "EAssignments"
+	}, {
+		"id": 8,
+		"name": "FAssignments"
+	}, {
+		"id": 9,
+		"name": "GAssignments"
+	}]
+}

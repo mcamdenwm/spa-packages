@@ -7,6 +7,7 @@ import { goodJobClient } from '@workmarket/projekt_good_job';
 // import sharedFunctions from './sharedFunctions';
 import store from '../store';
 import { authCb } from '../../goodjob';
+import WMCheckboxGroup from '../components/WMCheckboxGroup';
 
 // Store the local configuration so we don't hit the API again
 let configuredGetComponent;
@@ -20,17 +21,18 @@ const getComponentConfigurator = async () => {
 		let configuredSwagger;
 
 		if (process.env.NODE_ENV === 'development') {
-			configuredSwagger = await goodJobClient({
-				docsPath: '/api-docs/latest',
-				authCb,
-				quiet: true,
-				timeout: 3000,
-				badJob: false,
-				hostname: GOOD_JOB_HOST,
-				scheme: 'https',
-				clientTimeout: 5000,
-				unsafe: false,
-			});
+			configuredSwagger = await Swagger(`${API_HOST}/swagger.json`, {});
+			// configuredSwagger = await goodJobClient({
+			// 	docsPath: '/swagger.json',
+			// 	authCb,
+			// 	quiet: true,
+			// 	timeout: 3000,
+			// 	badJob: false,
+			// 	hostname: GOOD_JOB_HOST,
+			// 	scheme: 'https',
+			// 	clientTimeout: 5000,
+			// 	unsafe: true,
+			// });
 		} else {
 			configuredSwagger = await Swagger(API_URL, {});
 		}
@@ -44,6 +46,7 @@ const getComponentConfigurator = async () => {
 				...Components,
 				...Patterns,
 				WMGeneric,
+				WMCheckboxGroup,
 			},
 		});
 

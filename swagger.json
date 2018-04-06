@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Mock server for Package creation",
+    "version": "1.0.0",
+    "title": "Package Creation",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Entity",
+      "description": "Entity junk"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/companies": {
+      "get": {
+        "tags": [
+          "company"
+        ],
+        "summary": "Get a list of companies",
+        "description": "",
+        "operationId": "getCompanies",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EntityList"
+            }
+          }
+        }
+      }
+    },
+    "/features": {
+      "get": {
+        "tags": [
+          "feature"
+        ],
+        "summary": "Get a list of features",
+        "description": "",
+        "operationId": "getFeatures",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/EntityList"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EntityList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Entity"
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Entity"
+        }
+      },
+      "xml": {
+        "name": "Entity"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

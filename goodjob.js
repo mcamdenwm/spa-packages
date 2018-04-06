@@ -6,9 +6,11 @@ const {
 	PASSWORD
 } = require('./.credentials');
 
-const API_HOST = 'https://api-gtw.dev.workmarket.com';
+const API_HOST = process.env.BASE_API_URL || `https://api-gtw.dev.workmarket.com/`;
 const TOKEN_HOST = `${API_HOST}/v3/oauth/token?grant_type=password&username=${USER}&password=${PASSWORD}`;
 const SCHEME = 'https';
+
+console.log(API_HOST);
 
 const getToken = async (timeoutID) => {
 	console.log(chalk.blue('Beginning fetch for Auth Token.'));
