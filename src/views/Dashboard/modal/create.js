@@ -15,17 +15,11 @@ const labelStyle = {
 export default {
 	type: 'WMConfigurableModal',
 	uuid: 'createModal',
-	constants: {
-		log: (f) => {
-			console.log(f);
-			return f;
-		}
-	},
 	props: {
 		primaryLabel: 'Create',
 		secondaryLabel: 'Cancel',
 		title: 'Create Package',
-	}, /// R.filter(R.identity)(R.values(a))
+	},
 	selectors: {
 		primaryDisabled: ['___not',
 			['___and', 
