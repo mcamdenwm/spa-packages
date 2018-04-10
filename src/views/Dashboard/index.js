@@ -12,27 +12,5 @@ export default {
 		header,
 		createModal,
 		activateModal,
-		{
-			type: 'WMFlatButton',
-			props: {
-				label: 'Click',
-			},
-			actions: {
-				onClick: {
-					path: ['swagger'],
-					meta: {
-						swagger: {
-							operationId: 'getCompany',
-							onSuccess: {
-								path: ['swagger', 'success'],
-							},
-							onError: {
-								path: ['swagger', 'error'],
-							},
-						},
-					},
-				},
-			},
-		},
 	]
 };
