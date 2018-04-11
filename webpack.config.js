@@ -32,7 +32,7 @@ const devConfig = {
 		variables: {
 			'process.env.NODE_ENV': 'development',
 			'process.env.BABEL_ENV': 'development',
-			'process.env.BASE_API_URL': process.env.BASE_API_URL || 'http://localhost:8888',
+			'process.env.BASE_API_URL': process.env.BASE_API_URL || 'https://api-gtw.dev.workmarket.com',
 		},
 	},
 };

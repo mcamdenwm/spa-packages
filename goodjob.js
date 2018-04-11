@@ -87,5 +87,5 @@ module.exports = {
 	randomizePath: ['result', 'properties', 'payload'],
 	https: true,
 	// below is for you
-	customFaker: (object, randomValueGenerated) => { console.log(object); /* return whatever here */ return randomValueGenerated; }
+	customFaker: (object, randomValueGenerated) => { console.log("### GOODJOBFKAER ###", object); /* return whatever here */ return randomValueGenerated; }
 }

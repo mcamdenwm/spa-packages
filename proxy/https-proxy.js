@@ -1,3 +1,6 @@
+// Patch http parser for fun, $$
+process.binding('http_parser').HTTPParser = require('http-parser-js').HTTPParser;
+
 const fs = require("fs");
 const proxy = require("http-proxy");
 const chalk = require("chalk");
@@ -6,10 +9,10 @@ const url = require('url');
 
 const name = 'local';
 const hostname = 'localhost';
-const target = 9001;
+const target = 8888;
 const key = path.join(__dirname, './localhost.key');
 const cert = path.join(__dirname, './localhost.cert');
-const source = 9005;
+const source = 7777;
 
 proxy.createServer({
 	xfwd: true,
@@ -23,27 +26,7 @@ proxy.createServer({
 		cert: fs.readFileSync(cert, "utf8")
 	}
 }).on("error", function(e) {
-	console.error(chalk.red("Request failed to " + name + ": " + chalk.bold(e.code)));
-}).on('proxyRes', (proxyRes, req, res) => {
-	if (req.headers.origin) {
-		const originHostName = url.parse(req.headers.origin).hostname;
-		res.setHeader('access-control-allow-origin', req.headers.origin);
-		res.setHeader('access-control-allow-credentials', 'true');
-	}
-
-	if (req.headers['access-control-request-method']) {
-		res.setHeader('access-control-allow-methods', req.headers['access-control-request-method']);
-	}
-
-	if (req.headers['access-control-request-headers']) {
-		res.setHeader('access-control-allow-headers', req.headers['access-control-request-headers']);
-	}
-
-	res.setHeader('access-control-max-age', 60 * 60 * 24 * 30);
-	if (req.method === 'OPTIONS') {
-		res.send(200);
-		res.end();
-	}
+	console.error(chalk.red("Request failed to " + name + ": " + chalk.bold(e.code, e.message)), e.stack);
 })
 .listen(source);
 

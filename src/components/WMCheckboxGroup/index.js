@@ -20,10 +20,10 @@ export default class WMCheckboxGroup extends Component {
 				<label style={labelStyle}>{this.props.label} { this.props.required ? (<span style={{color: orange}}>*</span>) : null }</label>
 				{this.props.features.map(feature => 
 					<WMCheckbox
-						key={feature.id}
+						key={feature.uuid}
 						onCheck={(e, isChecked) => { this.props.onCheck(feature, isChecked); }}
 						label={feature.name}
-						id={`feature-${feature.id}`}
+						id={`feature-${feature.uuid}`}
 						labelStyle={{
 							color: grey,
 							fontWeight: 100,
@@ -31,7 +31,7 @@ export default class WMCheckboxGroup extends Component {
 						style={{
 							marginBottom: 20,
 						}}
-						checked={this.props.selectedFeatures[feature.id]}
+						checked={this.props.selectedFeatures[feature.uuid]}
 					/>
 				)}
 			</div>

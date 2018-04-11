@@ -7,7 +7,6 @@ import {
 export default {
 	type: 'WMGeneric',
 	uuid: 'dashboard',
-	constants: {},
 	children: [
 		header,
 		createModal,

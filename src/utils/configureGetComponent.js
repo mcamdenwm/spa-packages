@@ -16,23 +16,23 @@ const getComponentConfigurator = async () => {
 	if (!configuredGetComponent) {
 		// Accept specified API via env, with the current host as a default
 		const API_HOST = process.env.BASE_API_URL || `${window.location.protocol}//${window.location.host}`;
-		const GOOD_JOB_HOST = process.env.BASE_API_URL || window.location.host;
+		const GOOD_JOB_HOST = process.env.BASE_API_URL.replace(/http(s)?:\/\//, '') || window.location.host;
 		const API_URL = `${API_HOST}/api-docs/latest`;
 		let configuredSwagger;
 
 		if (process.env.NODE_ENV === 'development') {
-			configuredSwagger = await Swagger(`${API_HOST}/swagger.json`, {});
-			// configuredSwagger = await goodJobClient({
-			// 	docsPath: '/swagger.json',
-			// 	authCb,
-			// 	quiet: true,
-			// 	timeout: 3000,
-			// 	badJob: false,
-			// 	hostname: GOOD_JOB_HOST,
-			// 	scheme: 'https',
-			// 	clientTimeout: 5000,
-			// 	unsafe: true,
-			// });
+			// configuredSwagger = await Swagger(`${API_HOST}/swagger.json`, {});
+			configuredSwagger = await goodJobClient({
+				docsPath: '/swagger.json',
+				authCb,
+				quiet: true,
+				timeout: 3000,
+				badJob: false,
+				hostname: GOOD_JOB_HOST,
+				scheme: 'https',
+				clientTimeout: 5000,
+				unsafe: true,
+			});
 		} else {
 			configuredSwagger = await Swagger(API_URL, {});
 		}

@@ -58,25 +58,34 @@ export default {
 		type: 'WMGeneric',
 		actions: {
 			didMount: [{
-				path: ['Packages', 'CREATE', 'companies'],
-				meta: {
-					swagger: {
-						// @todo replace with actual op
-						operationId: 'getCompanies',
-						onSuccess: {
-							path: ['Packages', 'CREATE', 'companies', 'success'],
-						},
-						onError: {
-							path: ['Packages', 'CREATE', 'companies', 'error'],
-						},
-					},
-				},
+				path: ['Packages', 'CREATE', 'companies', 'success', 'body'],
+				payload: [{
+					name: 'AAA',
+					uuid: '1'
+				}, {
+					name: 'BBB',
+					uuid: '2',
+				}],
+				// meta: {
+				// 	swagger: {
+				// 		// @todo replace with actual op
+				// 		operationId: 'getCompanies',
+				// 		onSuccess: {
+				// 			path: ['Packages', 'CREATE', 'companies', 'success'],
+				// 		},
+				// 		onError: {
+				// 			path: ['Packages', 'CREATE', 'companies', 'error'],
+				// 		},
+				// 	},
+				// },
 			}, {
 				path: ['Packages', 'CREATE', 'features'],
+				payload: {
+					request: {},
+				},
 				meta: {
 					swagger: {
-						// @todo replace with actual op
-						operationId: 'getFeatures',
+						operationId: 'wm_feature_list',
 						onSuccess: {
 							path: ['Packages', 'CREATE', 'features', 'success'],
 						},
@@ -155,11 +164,11 @@ export default {
 				hintText: 'Enter and/or select company or companies...',
 				floatingLabelFixed: true,
 				chipLabelKey: 'name',
-				chipdIdKey: 'id',
-				chipMetaKey: 'id',
+				chipdIdKey: 'uuid',
+				chipMetaKey: 'uuid',
 				dataSourceConfig: {
 					text: 'name',
-					value: 'id',
+					value: 'uuid',
 				},
 				style: {
 					width: '100%',
@@ -188,7 +197,7 @@ export default {
 				onRemoveChip: [{
 					path: ['Packages', 'CREATE', 'selectedCompanies'],
 					payload: ['___filter', 
-						['___call', ['___propEq', 'id', ['___arg', 0]]],
+						['___call', ['___propEq', 'uuid', ['___arg', 0]]],
 						['___state', ['Packages', 'CREATE', 'selectedCompanies'], []
 					]],
 				}],
@@ -207,13 +216,13 @@ export default {
 					required: true,
 				},
 				selectors: {
-					features: ['___state', ['Packages', 'CREATE', 'features', 'success', 'body'], []],
+					features: ['___state', ['Packages', 'CREATE', 'features', 'success', 'body', 'result', 'payload'], []],
 					selectedFeatures: ['___state', ['Packages', 'CREATE', 'selectedFeatures'], {}],
 				},
 				actions: {
 					onCheck: {
 						path: ['Packages', 'CREATE', 'selectedFeatures'],
-						payload: ['___merge', ['___state', ['Packages', 'CREATE', 'selectedFeatures'], {}], ['___objOf', ['___arg', 0, 'id'], ['___arg', 1]]],
+						payload: ['___merge', ['___state', ['Packages', 'CREATE', 'selectedFeatures'], {}], ['___objOf', ['___arg', 0, 'uuid'], ['___arg', 1]]],
 					}
 				}
 			}]
