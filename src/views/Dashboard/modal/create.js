@@ -175,7 +175,7 @@ export default {
 				}
 			},
 			selectors: {
-				chips: ['___state', ['Packages', 'CREATE', 'selectedCompanies'], []],				
+				chips: ['___state', ['Packages', 'CREATE', 'selectedCompanies'], []],
 				dataSource: ['___filter',
 					['___call',
 						['___flip',

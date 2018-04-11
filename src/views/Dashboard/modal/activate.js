@@ -9,6 +9,30 @@ const messages = {
 	activateNow: 'Would you like to activate it now?',
 };
 
+const closeSequence = [{
+	// temporary until persist
+	path: ['Packages', 'CREATE', '_packageName'],
+	payload: ['___state', ['Packages', 'CREATE', 'packageName']],
+},{
+	path: ['Packages', 'ACTIVATE', 'open'],
+	payload: false,
+}, {
+	path: ['Packages', 'CREATE', 'packageName'],
+	payload: '',
+}, {
+	path: ['Packages', 'CREATE', 'packageNameIsValid'],
+	payload: false,
+}, {
+	path: ['Packages', 'CREATE', 'internalNotes'],
+	payload: '',
+}, {
+	path: ['Packages', 'CREATE', 'selectedCompanies'],
+	payload: [],
+}, {
+	path: ['Packages', 'CREATE', 'selectedFeatures'],
+	payload: [],
+}];
+
 export default {
 	type: 'WMConfigurableModal',
 	uuid: 'activateModal',
@@ -22,14 +46,24 @@ export default {
 		open: ['___state', ['Packages', 'ACTIVATE', 'open']]
 	},
 	actions: {
-		onClose: {
-			path: ['Packages', 'ACTIVATE', 'open'],
-			payload: false,
-		},
-		onSecondary: {
-			path: ['Packages', 'ACTIVATE', 'open'],
-			payload: false,
-		}
+		onClose: [
+		...closeSequence,
+		{
+			path: ['Packages', 'CREATE', 'successfullyCreatedPackage'],
+			payload: true,
+		}],
+		onSecondary: [
+		...closeSequence,
+		{
+			path: ['Packages', 'CREATE', 'successfullyCreatedPackage'],
+			payload: true,
+		}],
+		onPrimary: [
+		...closeSequence,
+		{
+			path: ['Packages', 'CREATE', 'successfullyCreatedPackageAndActivated'],
+			payload: true,
+		}]
 	},
 	children: [{
 		type: 'WMGeneric',
@@ -59,7 +93,7 @@ export default {
 			type: 'div',
 			children: [{
 				type: 'strong',
-				children: ['Pay Only'],
+				children: ['___state', ['Packages', 'CREATE', 'packageName']],
 			}, {
 				type: 'span',
 				children: [messages.created]
