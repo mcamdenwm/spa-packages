@@ -40,7 +40,7 @@ export default {
 			},
 		],
 	},
-	generateAlertBanner(['___call', ['___constant', 'dashboard.lib.formatString'], successfullyCreatedPackage, ['___state', ['Packages', 'CREATE', '_packageName']] ], ['Packages', 'CREATE', 'successfullyCreatedPackage'], null, 'successfullyCreatedPackage-alert', status = 'success'),
-	generateAlertBanner(['___call', ['___constant', 'dashboard.lib.formatString'], successfullyCreatedPackageAndActivated, ['___state', ['Packages', 'CREATE', '_packageName']] ], ['Packages', 'CREATE', 'successfullyCreatedPackageAndActivated'], null, 'successfullyCreatedPackageAndActivated-alert', status = 'success'),
+	generateAlertBanner(['___call', ['___constant', 'dashboard.lib.formatString'], successfullyCreatedPackage, ['___state', ['Packages', 'CREATE', '_packageName']] ], ['Packages', 'CREATE', 'successfullyCreatedPackage'], null, 'successfullyCreatedPackage-alert', 'success'),
+	generateAlertBanner(['___call', ['___constant', 'dashboard.lib.formatString'], successfullyCreatedPackageAndActivated, ['___state', ['Packages', 'CREATE', '_packageName']] ], ['Packages', 'CREATE', 'successfullyCreatedPackageAndActivated'], null, 'successfullyCreatedPackageAndActivated-alert', 'success'),
 	]
 };

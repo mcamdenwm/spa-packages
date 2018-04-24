@@ -14,11 +14,11 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "@workmarket/front-end-components": "11.0.0",
-    "@workmarket/front-end-patterns": "^4.18.2",
+    "@workmarket/front-end-components": "12.0.1",
     "@workmarket/hunk": "^1.0.1",
     "@workmarket/js-utils": "4",
     "@workmarket/lolz": "^6.1.1",
+    "@workmarket/projekt_good_job": "^8.0.5",
     "@workmarket/sherpa": "^0.1.0",
     "@workmarket/ui-configs": "^1.1.1",
     "@workmarket/ui-generation": "4.0.0-alpha.3-camden-fork",
@@ -62,7 +62,6 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "@workmarket/projekt_good_job": "^8.0.5",
     "chalk": "^2.3.2",
     "http-parser-js": "^0.4.11",
     "http-proxy": "^1.16.2",

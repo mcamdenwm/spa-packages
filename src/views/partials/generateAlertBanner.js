@@ -6,6 +6,7 @@ export const failureMessages = {
 export const successMessages = {
 	successfullyCreatedPackage: '${0} has been created.', // eslint-disable-line no-template-curly-in-string
 	successfullyCreatedPackageAndActivated: '${0} has been created and is now active.', // eslint-disable-line no-template-curly-in-string
+	failedToCreatePackage: 'System has failed to create ${0}.', // eslint-disable-line no-template-curly-in-string
 };
 
 export default function generateAlertBanner (message, path, condition, uuid = uuidGen(), status = 'error', dismissData = null) {

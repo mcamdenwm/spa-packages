@@ -1,4 +1,5 @@
 import { commonStyles } from '@workmarket/front-end-components';
+import resetForm from './partials/resetForm';
 
 const {
 	green,
@@ -16,22 +17,9 @@ const closeSequence = [{
 },{
 	path: ['Packages', 'ACTIVATE', 'open'],
 	payload: false,
-}, {
-	path: ['Packages', 'CREATE', 'packageName'],
-	payload: '',
-}, {
-	path: ['Packages', 'CREATE', 'packageNameIsValid'],
-	payload: false,
-}, {
-	path: ['Packages', 'CREATE', 'internalNotes'],
-	payload: '',
-}, {
-	path: ['Packages', 'CREATE', 'selectedCompanies'],
-	payload: [],
-}, {
-	path: ['Packages', 'CREATE', 'selectedFeatures'],
-	payload: [],
-}];
+},
+	...resetForm,
+];
 
 export default {
 	type: 'WMConfigurableModal',
@@ -69,7 +57,8 @@ export default {
 		type: 'WMGeneric',
 		props: {
 			style: {
-				marginBottom: 30,
+				marginTop: 50,
+				marginBottom: 50,
 				textAlign: 'center',
 				transform: 'scale(4)',
 			},
@@ -92,8 +81,10 @@ export default {
 		children: [{
 			type: 'div',
 			children: [{
-				type: 'strong',
-				children: ['___state', ['Packages', 'CREATE', 'packageName']],
+				type: 'WMStrong',
+				selectors: {
+					children: ['___state', ['Packages', 'CREATE', 'new', 'success', 'body', 'result', 'payload', '0', 'name']],
+				}
 			}, {
 				type: 'span',
 				children: [messages.created]
